@@ -417,34 +417,34 @@ def handleSquareOff(angel_token_symbol, token, orderItem):
 
     print("ORDER PNL STATE IS: ", state)
 
-    if state == "PROFIT" and isTargetModified == False:               # -------- IF POSITION IS IN PROFIT
+    if state == "PROFIT" and isTargetModified == False:       # -------- IF POSITION IS IN PROFIT
       modified_response  = api.modify_order(
         exchange='NFO', 
         tradingsymbol=orderItem['symbol'], 
         orderno=orderItem['exit_order_no'],
         newquantity=15, 
         newprice_type='SL-LMT', 
-        newprice=orderItem['target_price'],                           # LIMIT PRICE
-        newtrigger_price=orderItem['target_price'])               # TRIGGER PRICE < LIMIT PRICE
+        newprice=orderItem['target_price'],                   # LIMIT PRICE
+        newtrigger_price=orderItem['target_price'])           # TRIGGER PRICE < LIMIT PRICE
 
       
-      isTargetModified = True           # TARGET MODIFIED = TRUE
-      isStoplossModified = False        # STOPLOSS MODIFIED = FALSE
+      isTargetModified = True                                 # TARGET MODIFIED = TRUE
+      isStoplossModified = False                              # STOPLOSS MODIFIED = FALSE
       api_called = api_called +1
 
       print("BOOK PROFIT :: CURRENT PRICE : ",float(current_price), "  ", "BUYING PRICE: ", float(orderItem['buying_price']), " ", orderItem['order_name'], " --- ORDER RESPONSE --- ", modified_response )
-      #--------------------------------------------------------------------- REF: README.PY > MODIFIY TARGET
+    #--------------------------------------------------------------------- REF: README.PY > MODIFIY TARGET
     
 
 
-    if state == "LOSS" and isStoplossModified == False:
+    if state == "LOSS" and isStoplossModified == False:       # -------- IF POSITION IS IN LOSS
       modified_response = api.modify_order(
         exchange='NFO', 
         tradingsymbol=orderItem['symbol'], 
         orderno=orderItem['exit_order_no'],
         newquantity=15, 
         newprice_type='SL-LMT', 
-        newprice=orderItem['stoploss_price'], 
+        newprice=orderItem['stoploss_price'],                 # LIMIT PRICE
         newtrigger_price=orderItem['stoploss_price'] + 1)     # TRIGGER PRICE > LIMIT PRICE
       
       isStoplossModified = True                               # STOPLOSS MODIFIED = TRUE
@@ -453,7 +453,7 @@ def handleSquareOff(angel_token_symbol, token, orderItem):
 
 
       print("BOOK PROFIT :: CURRENT PRICE : ",float(current_price), "  ", "BUYING PRICE: ", float(orderItem['buying_price']), " ", orderItem['order_name'], " --- ORDER RESPONSE --- ", modified_response )
-      #--------------------------------------------------------------------- REF: READMY.PY > MODIFY STOPLOSS
+    #--------------------------------------------------------------------- REF: READMY.PY > MODIFY STOPLOSS
 
 
 
