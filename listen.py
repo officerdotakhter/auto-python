@@ -359,7 +359,7 @@ def handleSquareOff(angel_token_symbol, token, orderItem):
     print("ORDER EXECUTION STATUS :::  ", getOrderStauts(orderItem_history)['tsym'], " STATUS: ", getOrderStauts(orderItem_history)['stat'], " CHECK STATUS COUNT: ", order_history_count)
 
     # IF ORDER EXECUTED THEN
-    if getOrderStauts(orderItem_history)['stat'] == 'Ok' and getOrderStauts(orderItem_history)['status'] == "COMPLETED":
+    if getOrderStauts(orderItem_history)['stat'] == 'Ok' and getOrderStauts(orderItem_history)['status'] == "COMPLETE" or getOrderStauts(orderItem_history)['status'] == "OPEN":
       orderItem['is_order_executed'] = True                                       
       
       # PLACE SQUARE OFF ORDER
