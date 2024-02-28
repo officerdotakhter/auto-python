@@ -350,13 +350,13 @@ def handleSquareOff(angel_token_symbol, token, orderItem):
   global isStoplossModified, isTargetModified
   global isAlternateOrderCancelled
   global thread_1_Active
-  global thread_2_Active
+  global thread_2_Active 
 
   # IF ORDER NOT EXECUTED THEN CHECK EXECUTION STATUS
   if orderItem['is_order_executed'] == False:
     orderItem_history = api.single_order_history(orderno=orderItem['order_no']) 
     order_history_count = order_history_count + 1
-    print("ORDER EXECUTION STATUS :::  ", getOrderStauts(orderItem_history)['tsym'], " STATUS: ", getOrderStauts(orderItem_history)['stat'], " CHECK STATUS COUNT: ", order_history_count)
+    print("ORDER EXECUTION STATUS :::  ", getOrderStauts(orderItem_history)['tsym'], " STATUS: ", getOrderStauts(orderItem_history)['status'], " CHECK STATUS COUNT: ", order_history_count)
 
     # IF ORDER EXECUTED THEN
     if getOrderStauts(orderItem_history)['stat'] == 'Ok' and getOrderStauts(orderItem_history)['status'] == "COMPLETE" or getOrderStauts(orderItem_history)['status'] == "OPEN":
