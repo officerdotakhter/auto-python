@@ -149,7 +149,7 @@ def loopForOrder1():
     if token1 != 0 and order1_Obj['order_no'] != '':
       print("THREAD 1 IS RUNNING:  ", thread_1_Active)
       handleSquareOff(order1_Obj['angel_symbol'], order1_Obj['token'], order1_Obj)
-    time.sleep(1/2.5)      
+    time.sleep(1/2)      
 # -----------------------------------------------------------------------------------
 
 
@@ -163,7 +163,7 @@ def loofForOrder2():
     if token2 != 0 and order2_Obj['order_no'] != '':
       print("THREAD 2 IS RUNNING:  ", thread_2_Active)
       handleSquareOff(order2_Obj['angel_symbol'], order2_Obj['token'], order2_Obj)
-    time.sleep(1/2.5) 
+    time.sleep(1/2) 
 # -----------------------------------------------------------------------------------
 
 
