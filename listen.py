@@ -76,8 +76,11 @@ loginResult = api.login(userid=user, password=pwd, twoFA=otp, vendor_code=vc, ap
 # MY CHANNEL : 1001959827182
 # SHIVAY CHANNEL: 1001640142628
 
+myChannelID = -1001959827182
+shivayChannelID = -1001640142628
 
-senderUserID = -1001959827182
+
+senderUserID = myChannelID
 receiverUserID = -1001959125612
 # ----------- MANAGE CHANNEL --------------
 
